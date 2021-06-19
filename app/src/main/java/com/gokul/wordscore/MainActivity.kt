@@ -5,9 +5,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.gokul.wordscore.adapter.WordAdapter
 import com.gokul.wordscore.databinding.ActivityMainBinding
@@ -56,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hitApi() {
-        vm.obverseData().observe(this, Observer {
+        vm.obverseData().observe(this, {
             binding.ivNoData.visibility = View.GONE
             if (it != null) {
                 adapter = WordAdapter(it)
@@ -69,12 +66,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-            if(it ==  null || it.size==0){
+            if (it == null || it.size == 0) {
                 binding.pbLoading.visibility = View.GONE
-                if(binding.etSearch.text.toString() == ""){
+                if (binding.etSearch.text.toString() == "") {
                     binding.ivNoData.visibility = View.INVISIBLE
-                }
-                else{
+                } else {
                     binding.ivNoData.visibility = View.VISIBLE
                 }
 
