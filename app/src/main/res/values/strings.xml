@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Word Score</string>
+    <string name="check_the_score">Check The Score</string>
+    <string name="enter_words">Enter Words</string>
 </resources>
